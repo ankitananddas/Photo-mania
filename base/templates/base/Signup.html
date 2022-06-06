@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        .signup-bar {
+            background-color: rgb(204, 198, 191);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            display: block;
+            justify-content: center;
+            height: 300px;
+            width: 360px;
+            margin: 400px;
+            margin-top: 200px;
+            padding: 0 10px 10px;
+            border-radius: 15px;
+        }
+        .sign {
+            background-color: rgb(105, 95, 196);
+            align-content: center;
+            padding-left: 20px;
+            margin-top: 0;
+            height: 40px;
+        }
+        .input-data div {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-bar">
+        <div class="sign">
+            <h2>Signup</h2>
+        </div>
+        <div class="input-data">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="username">
+                    <label for="username" name="username">Username</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+                <div class="profile-pic">
+                    <label for="profile-image" name="image">Profile Pic</label>
+                    <input type="file" name="image" id="image">
+                </div>
+                <div class="bio">
+                    <label for="bio" name="bio">Bio</label>
+                    <input type="text" name="bio" id="bio">
+                </div>
+                <div class="Password">
+                    <label for="password1">Password</label>
+                    <input type="password" name="password" id="">
+                </div>
+                <div class="cpass">
+                    <label for="c-password1" name="c-password">Confirm Password</label>
+                    <input type="password" name="cpassword" id="">
+                </div>
+                <button type="submit" class="button">Create Profile</button>
+                <h4><a href="{% url 'Login' %}">Login Page</a></h4>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

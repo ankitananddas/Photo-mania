@@ -1,0 +1,81 @@
+{% extends 'base/orig.html' %}
+
+{% block css_files %}
+    <style>
+        .head {
+            display: flex;
+            justify-content: space-between;
+            float: right;
+            margin-top: 0;
+            margin-left: 70px;
+            background-color: rgb(199, 204, 209);
+            text-align: center;
+            font-size: 2.5rem;
+        }
+        .head div {
+            padding: 20px;
+        }
+        .main-bar {
+            display: -webkit-box;
+            background-color: rgb(199, 204, 209);
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .main-bar h1 {
+            font-size: 2.5rem;
+            margin-top: 70px;
+            margin-left: 10px;
+            text-align: center;
+        }
+        header img {
+            height: 100px;
+            width: 100px;
+            border-radius: 15px;
+            margin-top: 40px;
+            
+        }
+        .post-section {
+            display: -webkit-box;
+            margin: 2px;
+        }
+        .card img {
+            height: 350px;
+            width: 350px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+<div class="elements-style">
+    <header class="main-bar">
+        <img src="{{profile.profile_picture.url}}" class="rounded-circle" alt="..." />
+        <h1>{{profile.user}}</h1>
+        <h4>{{bio}}</h4>
+        <div class="head" style="width: 50vw">
+            <div class="d-flex flex-column">
+                <h5>Posts</h5>
+                <h5>{{posts_num}}</h5>
+            </div>
+            <div class="d-flex flex-column">
+                <h5>Followers</h5>
+                <h5>{{profile.followers.count}}</h5>
+            </div>
+            <div class="d-flex flex-column">
+                <h5>Following</h5>
+                <h5>{{profile.followings.count}}</h5>
+            </div>
+        </div>
+    </header>
+    <div class="post-section">
+        {% for post in posts %}
+        
+        <div class="post-img">
+            <div class="card" >
+                <img src="{{post.image.url}}"  alt="..." />
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

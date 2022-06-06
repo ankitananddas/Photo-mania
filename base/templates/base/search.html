@@ -1,0 +1,53 @@
+{% extends 'base/orig.html' %}
+{% load static %}
+{% block css_files %}
+    <style>
+        .Profile {
+            background-color: rgba(151, 226, 226, 0.836);
+            display: block;
+            height: 200px;
+            width: 450px;
+            margin-left: 350px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    <body>
+        <main>
+            <div class="Profile">
+                <div>
+                    {% for profile in profiles %}
+                    {% if user in profile.followers.all %}
+                    <div>
+                        <img src="{{profileimage}}" alt="">
+                        <a href="/profile/{{profile.id}}">
+                            <h4>{{profile.user}}</h4>
+                        </a>
+                    </div>
+    
+                    <div>
+                        <a href="/follow/{{profile.id}}/{{username}}">Unfollow</a>
+                    </div>
+                </div>
+                {% else %}
+                <div>
+                    <div>
+                        <img src="{{profileimage}}" alt="">
+                        <a href="/profile/{{profile.id}}">
+                            <h4>{{profile.user}}</h4>
+                        </a>
+                    </div>
+    
+                    <div>
+                        <a href="/follow/{{profile.id}}/{{username}}">Follow</a>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+    
+        </main>
+    </body>
+{% endblock %}

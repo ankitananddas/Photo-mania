@@ -1,0 +1,69 @@
+{% extends 'base/orig.html' %}
+{% load static %}
+{% block css_files %}
+    <style>
+        body {
+            
+        }
+        .post {
+            margin-left: 443px;
+            margin-top: 0px;
+            margin-bottom: 40px;
+        }
+        .post-header {
+            padding: 6px 1px;
+            border: solid rgb(211, 211, 182);
+            border-style: groove;
+            margin: 0 0;
+            height: 57px;
+            width: 500px;
+            margin-bottom: 0px;
+            background-color: rgb(211, 211, 182);
+        }
+        .post-header h4 {
+            float: right;
+            padding-left: 20px;
+        }
+        .post-img {
+            padding: 0 0;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            height: 500px;
+            width: 500px;
+            box-shadow: 20px;
+            border: solid rgb(63, 60, 60);
+            
+        }
+        .post-header img {
+            height: 44px;
+            width: 44px;
+            border-radius: 45%;
+            border: solid rgb(58, 58, 104);
+        }
+        .post-likes {
+            border: solid rgb(211, 211, 182);
+            border-style: groove;
+            background-color: rgb(211, 211, 182);
+            padding-left: 10px;
+            height: 30px;
+            width: 492px;
+            
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    {% for post in posts %}
+    <div class="post">
+        <div class="post-header">
+            <img src="{{post.profile.profile_picture.url}}" alt="profile img" srcset="" />
+            <h4>{{post.profile.user}}</h4>
+        </div>
+        <img src="{{post.image.url}}" alt="post" class="post-img"/>
+        <div class="post-likes">
+            <a href="/like/{{post.id}}" id="like">Like</a>
+            {{post.likes.count}}
+        </div>
+    </div>
+    
+    {% endfor %}
+{% endblock %}

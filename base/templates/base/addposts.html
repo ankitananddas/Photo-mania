@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>addpost</title>
+    <style>
+      .post {
+        background: rgb(181, 224, 219);
+        display: block;
+        justify-content: center;
+        height: 300px;
+        width: 300px;
+        margin-left: 500px;
+        padding: 0 10px 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    {% if messages %} {% for message in messages %} {{message}}
+    <div><button type="button">Close</button></div>
+    {% endfor %} {% endif %}
+    <div class='post'>
+    <form action="" method="POST" class="addpost" enctype="multipart/form-data">
+      {% csrf_token %}
+      <h1>Add Post</h1>
+      <input type="file" name="image" id="image" />
+      <button type="submit" class="submit-btn">Add</button>
+    </form>
+    <a href="{% url 'home' %}">Home</a>
+  </div>
+  </body>
+</html>

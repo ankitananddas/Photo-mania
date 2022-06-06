@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        .Login-bar {
+            background-color: rgb(204, 198, 191);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            display: block;
+            justify-content: center;
+            height: 200px;
+            width: 260px;
+            margin: 150px;
+            padding: 0 10px 10px;
+            border-radius: 15px;
+        }
+        .space {
+            display: flex;
+            justify-content: center;
+        }
+        .sign {
+            background-color: rgb(105, 95, 196);
+            align-content: center;
+            padding-left: 20px;
+            margin-top: 0;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="space">
+        <div class="Login-bar">
+            <div class="sign">
+                <h2>Login</h2>
+            </div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div>
+                    <label for="username" name="username">User Name</label>
+                    <input type="text" name="username" id="username">
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <h4>Don't have an account <a href="{% url 'signup' %}">Create Account</a></h4>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
